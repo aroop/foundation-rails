@@ -56,6 +56,7 @@ $(document).ready(function () {
 
 	/* DROPDOWN NAV ------------- */
 	// FIX for IE 7-8
+		// FIX for IE 7-8
 	var afterSelectorSupport = '';
 	if(jQuery.support.leadingWhitespace == true) afterSelectorSupport = ', .nav-bar li a:after';
 
@@ -82,6 +83,8 @@ $(document).ready(function () {
 		e.stopPropagation();
 		if ($(e.target).parents().is('.flyout') || $(e.target).is('.flyout')) {
 			e.preventDefault();
+		}
+	});
 	// $('body').bind('touchend', function(e) {
 	// 	if (!$(e.target).parents().is('.nav-bar') || !$(e.target).is('.nav-bar')) {
 	// 		$('.nav-bar li .flyout').is(':visible').hide();
