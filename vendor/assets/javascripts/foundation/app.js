@@ -55,12 +55,15 @@ $(document).ready(function () {
 
 
 	/* DROPDOWN NAV ------------- */
+	// FIX for IE 7-8
+	var afterSelectorSupport = '';
+	if(jQuery.support.leadingWhitespace == true) afterSelectorSupport = ', .nav-bar li a:after';
 
 	var currentFoundationDropdown = null;
-	$('.nav-bar li a, .nav-bar li a:after').each(function() {
+	$('.nav-bar li a'+afterSelectorSupport).each(function() {
 		$(this).data('clicks', 0);
 	});
-	$('.nav-bar li a, .nav-bar li a:after').live('click', function(e) {
+	$('.nav-bar li a'+afterSelectorSupport).live('click', function(e) {
 		e.preventDefault();
 		if (currentFoundationDropdown !== $(this).index() || currentFoundationDropdown === null) {
 			$(this).data('clicks', 0);
@@ -79,8 +82,6 @@ $(document).ready(function () {
 		e.stopPropagation();
 		if ($(e.target).parents().is('.flyout') || $(e.target).is('.flyout')) {
 			e.preventDefault();
-		}
-	});
 	// $('body').bind('touchend', function(e) {
 	// 	if (!$(e.target).parents().is('.nav-bar') || !$(e.target).is('.nav-bar')) {
 	// 		$('.nav-bar li .flyout').is(':visible').hide();
